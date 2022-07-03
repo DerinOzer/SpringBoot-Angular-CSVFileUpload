@@ -1,0 +1,39 @@
+<div class="container-fluid">
+    <p class="explication">Upload a file to display the pair of employees that worked together the longest, and the projects on which they worked together. <br>
+    Your file should include the following headers <span>[EmpID, ProjectID, DateFrom, DateTo]</span> otherwise your file wouldn't be processed.</p>
+    <input [disabled]="isDisabled" type="file" #fileImportInput class="choose-file" accept=".csv" (change)="onFileSelect($event)">
+    <input [disabled]="isDisabled" type="button" (click)="submitFile()" class="file-upload" value="Upload">
+    <div *ngIf="errorMessage">
+        <div class="warning-message">
+            <p class="text-style">{{errorMessage}}</p>
+            <button class="restart" (click)="restart()">Upload Another File</button>
+        </div>
+        
+    </div>
+    <div *ngIf="listEmptyMessage" class="warning-message">
+        <p class="warning-pairs">The are no employee pairs that worked together.</p>
+        <button class="restart" (click)="restart()">Upload Another File</button>
+    </div>
+    <div *ngIf="employeePairsExist" class="table-style">
+        <table class="table table-light">
+            <thead class="thead-light">
+                <tr>
+                    <th>Employee ID #1</th>
+                    <th>Employee ID #2</th>
+                    <th>Project ID</th>
+                    <th>Days Worked Together</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let ep of employeePairs">
+                    <td>{{ep.empID1}}</td>
+                    <td>{{ep.empID2}}</td>
+                    <td>{{ep.projectID}}</td>
+                    <td>{{ep.daysWorked}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="restart" (click)="restart()">Upload Another File</button>
+    </div>  
+</div>
+

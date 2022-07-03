@@ -1,0 +1,23 @@
+a{
+    color: white;
+}
+
+a:hover{
+    color: #3abecf;
+    background-color: white;
+}
+
+a:focus{
+    color: #3abecf;
+    font-weight: bold;
+}
+
+nav{
+    background-color: #283246;
+}
+
+footer{
+    position:absolute;
+    left: 30px;
+    bottom: 30px;
+}
